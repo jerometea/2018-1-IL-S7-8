@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using FluentAssertions;
 using System;
 
 namespace ITI.Work.Tests
@@ -11,7 +12,8 @@ namespace ITI.Work.Tests
         public void yes_we_can()
         {
             var y = new YesWeCan();
-            y.Work();
+            Assert.DoesNotThrow( () => y.Work(), "There is no exception when we work." );
+            y.Invoking(sut => sut.Work()).Should().NotThrow("There is no exception when we work.");
         }
 
         [Test]
