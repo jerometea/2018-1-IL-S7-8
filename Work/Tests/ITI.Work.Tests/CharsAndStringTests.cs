@@ -69,7 +69,7 @@ namespace ITI.Work.Tests
             sB.Should().BeSameAs( s );
 
             RemoveDiacriticsBetter( "â ë l" ).Should().Be( "a e l" );
-            RemoveDiacriticsBetter( "---ù" ).Should().Be( "a e l" );
+            RemoveDiacriticsBetter( "---ù" ).Should().Be( "---u" );
             RemoveDiacriticsBetter( "ï" ).Should().Be( "i" );
             RemoveDiacriticsBetter( "" ).Should().BeSameAs( "" );
             RemoveDiacriticsBetter( "ÂÎ" ).Should().Be( "AI" );
@@ -93,7 +93,6 @@ namespace ITI.Work.Tests
         }
 
 
-
         static string RemoveDiacriticsNaïve( string s )
         {
             var sD = s.Normalize( NormalizationForm.FormD );
@@ -106,6 +105,20 @@ namespace ITI.Work.Tests
                 }
             }
             return b.ToString();
+        }
+
+        [Test]
+        public void seeing_encoding()
+        {
+            var greek = Encoding.GetEncoding( 737 );
+            var noelInUTF8 = Encoding.UTF8.GetBytes( "Noël" );
+
+            var received = noelInUTF8;
+            string shouldBeNoel = Encoding.UTF7.GetString( received );
+
+            var noelInGreek = greek.GetBytes( "Noël" );
+            var noelInUTF7 = Encoding.UTF7.GetBytes( "Noël" );
+            var noelInUTF32 = Encoding.UTF32.GetBytes( "Noël" );
         }
 
 
