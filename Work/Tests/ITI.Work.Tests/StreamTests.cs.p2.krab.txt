@@ -60,11 +60,12 @@ namespace ITI.Work.Tests
             readBack.Should().BeEquivalentTo( data );
 
             byte[] readFailed = Read( written, password + password );
-            //readFailed.Should().NotBeEquivalentTo( data );
+            readFailed.Should().NotBeEquivalentTo( data );
         }
 
         [TestCase( "p1", 3 )]
         [TestCase( "p2", 73 )]
+        [TestCase( "p3", 273 )]
         public void Krabouille_stream_on_file( string pwd, int bufferSize )
         {
             string original = ThisFilePath();
