@@ -15,7 +15,7 @@ namespace ITI.Work.Tests
         public void how_list_works()
         {
             var myList = new ITIListInt();
-            myList.Add( 3172 );
+            myList.Add( 3712 );
             myList[0].Should().Be( 3712 );
             myList[0] = -67;
             myList[0].Should().Be( -67 );
