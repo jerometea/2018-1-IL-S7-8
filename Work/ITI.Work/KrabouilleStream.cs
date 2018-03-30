@@ -110,7 +110,10 @@ namespace ITI.Work
         {
             for( int i = 0; i < count; ++i )
             {
-                _workingBuffer[i] ^= _secretKey[_position % _secretKey.Length];
+                byte bSecret = _secretKey[_position % _secretKey.Length];
+                byte newValue = _workingBuffer[i] ^= bSecret;
+                byte newSecret = (byte)(bSecret + newValue);
+                _secretKey[_position % _secretKey.Length] = newSecret;
                 _position++;
             }
             _inner.Write( _workingBuffer, 0, count );
