@@ -4,24 +4,24 @@ using System.Text;
 
 namespace ITI.Work
 {
-    public interface IITIReadOnlyListInt
+    public interface IITIReadOnlyList<T>
     {
         int Count { get; }
 
-        int this[int index] { get; }
+        T this[int index] { get; }
 
-        int IndexOf( int i );
+        int IndexOf( T value );
     }
 
-    public interface IITIListInt : IITIReadOnlyListInt
+    public interface IITIList<T> : IITIReadOnlyList<T>
     {
-        new int this[ int index ] { get; set; }
+        new T this[ int index ] { get; set; }
 
-        void Add( int i );
+        void Add( T i );
 
         void RemoveAt( int index );
 
-        void InsertAt( int index, int value );
+        void InsertAt( int index, T value );
     }
 
 }
