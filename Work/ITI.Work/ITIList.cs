@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -74,5 +75,37 @@ namespace ITI.Work
             Array.Copy( _tab, newTab, _count );
             _tab = newTab;
         }
+
+        class E : IEnumerator<T>
+        {
+            readonly ITIList<T> _papa;
+
+            public E( ITIList<T> papa )
+            {
+                _papa = papa;
+            }
+
+            public T Current => ;
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose()
+            {
+            }
+
+            public bool MoveNext()
+            {
+            }
+
+            public void Reset() => throw new NotSupportedException();
+        }
+
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new E( this );
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

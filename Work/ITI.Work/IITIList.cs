@@ -4,10 +4,13 @@ using System.Text;
 
 namespace ITI.Work
 {
-    public interface IITIReadOnlyList<T>
+    public interface IITIReadOnlyCollectio<T> : IEnumerable<T>
     {
         int Count { get; }
+    }
 
+    public interface IITIReadOnlyList<T> : IITIReadOnlyCollectio<T>
+    {
         T this[int index] { get; }
 
         int IndexOf( T value );

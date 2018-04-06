@@ -12,16 +12,44 @@ namespace ITI.Work.Tests
     public class DataStructureTests
     {
         [Test]
-        public void our_list_supports_foreach()
+        public void our_generic_list_supports_foreach()
         {
-            var myList = new ITIListInt();
+            var myList = new ITIList<int>();
             myList.Add( 3712 );
 
-            //foreach( var i in myList )
-            //{
+            foreach( var i in myList )
+            {
+                Console.WriteLine( i );
+            }
 
-            //}
+            ///
+            using( IEnumerator<int> e = myList.GetEnumerator() )
+            {
+                while( e.MoveNext() )
+                {
+                    Console.WriteLine( e.Current );
+                }
+            }
+
+            ///
+            IEnumerator<int> e = myList.GetEnumerator();
+            try
+            {
+                while( e.MoveNext() )
+                {
+                    Console.WriteLine( e.Current );
+                }
+            }
+            finally
+            {
+                e.Dispose();
+            }
+
         }
+
+
+
+    }
 
         [Test]
         public void how_list_works()
