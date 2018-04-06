@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ITI.Work
 {
-    public class ITIListInt
+    public class ITIListInt : IITIListInt
     {
         int[] _tab;
         int _count;
@@ -45,6 +45,7 @@ namespace ITI.Work
 
         public void InsertAt( int index, int value )
         {
+
         }
 
         public int IndexOf( int i )
