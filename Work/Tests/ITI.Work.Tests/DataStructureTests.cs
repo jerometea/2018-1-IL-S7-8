@@ -50,10 +50,6 @@ namespace ITI.Work.Tests
 
         }
 
-
-
-    }
-
         [Test]
         public void how_list_works()
         {
