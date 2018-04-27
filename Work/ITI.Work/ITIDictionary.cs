@@ -45,7 +45,7 @@ namespace ITI.Work
                 while(next != null)
                 {
                     lastNode = next;
-                    if( next.Key.GetHashCode().Equals( key.GetHashCode() ))
+                    if( next.Key.Equals( key ))
                     {
                         throw new Exception();
                     }
